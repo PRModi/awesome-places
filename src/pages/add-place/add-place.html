@@ -1,18 +1,67 @@
-<!--
-  Generated template for the AddPlacePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
-    <ion-title>add-place</ion-title>
+    <ion-title>Add a place</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <ion-list>
+      <ion-item>
+        <ion-label fixed>Title</ion-label>
+        <ion-input type="text" name="title" placeholder="Beautiful garden" ngModel required></ion-input>
+      </ion-item>
 
+      <ion-item>
+        <ion-label floating>Short Description</ion-label>
+        <ion-textarea name="description" ngModel required></ion-textarea>
+      </ion-item>
+    </ion-list>
+
+    <ion-grid text-center>
+      <ion-row>
+        <ion-col>
+          <button type="button" ion-button block outline icon-left>
+          <ion-icon name="locate"></ion-icon>Locate me</button>
+        </ion-col>
+        <ion-col>
+          <button type="button" ion-button block outline icon-left (click)="onOpenMap()">
+            <ion-icon name="map"></ion-icon>Locate on map</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <p>select on map...</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <h5>Take a photo!</h5>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <button ion-button block outline icon-left>
+          <ion-icon name="camera"></ion-icon>
+          Open camera
+        </button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <img [src]="">
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <button type="submit" ion-button block color="secondary" [disabled]="!f.valid">Add this Place</button>
+      </ion-row>
+    </ion-grid>
+  </form>
 </ion-content>
