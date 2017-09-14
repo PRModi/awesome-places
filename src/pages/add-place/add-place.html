@@ -24,7 +24,7 @@
     <ion-grid text-center>
       <ion-row>
         <ion-col>
-          <button type="button" ion-button block outline icon-left>
+          <button type="button" ion-button block outline icon-left (click)="locateMe()">
           <ion-icon name="locate"></ion-icon>Locate me</button>
         </ion-col>
         <ion-col>
@@ -33,9 +33,11 @@
         </ion-col>
       </ion-row>
 
-      <ion-row>
+      <ion-row *ngIf="locationIsSet">
         <ion-col>
-          <p>select on map...</p>
+          <sebm-google-map [latitude]="location.lat" [longitude]="location.lng" [zoom]="16">
+            <sebm-google-map-marker [latitude]="location.lat" [longitude]="location.lng"></sebm-google-map-marker>
+          </sebm-google-map>
         </ion-col>
       </ion-row>
 
@@ -60,7 +62,7 @@
       </ion-row>
 
       <ion-row>
-        <button type="submit" ion-button block color="secondary" [disabled]="!f.valid">Add this Place</button>
+        <button type="submit" ion-button block color="secondary" [disabled]="!f.valid || !locationIsSet">Add this Place</button>
       </ion-row>
     </ion-grid>
   </form>
